@@ -216,7 +216,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
                             //email
                             {
                                 'type': 'TextBlock',
-                                'text': 'Enter email of the Employee ?:'
+                                'text': 'Enter email of the Candidate ?:'
                             },
                             {
                                 'type': 'Input.Text',
@@ -246,18 +246,18 @@ var bot = new builder.UniversalBot(connector, function (session) {
 });
 
 bot.on('conversationUpdate', function (message) {
-        if (message.membersAdded) {
-            message.membersAdded.forEach(function (identity) {
-                if (identity.id === message.address.bot.id) {
-                    var reply = new builder.Message()
-                        .speak('Welcome to HR Bot')
-                        .address(message.address)
-                        .text('Welcome to HR Bot.');
-                    bot.send(reply);
-                }
-            });
-        }
-    });
+    if (message.membersAdded) {
+        message.membersAdded.forEach(function (identity) {
+            if (identity.id === message.address.bot.id) {
+                var reply = new builder.Message()
+                    .speak('Welcome to HR Bot')
+                    .address(message.address)
+                    .text('Welcome to HR Bot.');
+                bot.send(reply);
+            }
+        });
+    }
+});
 
 bot.dialog('add-profile', require('./add-profile'));
 bot.dialog('get-feedback', require('./get-feedback'));
@@ -279,6 +279,16 @@ function processSubmitAction(session, value) {
             }
             break;
 
+        case 'addfeedback':
+            if (addUserFeedBack(value)) {
+                session.send('Feedback Added Successfully. Thank You!!');
+                // session.beginDialog('Feedback Added Successfully. Thank You!!');
+            } else {
+                session.send('Feedback Added Successfully. Thank You!!');
+                // session.beginDialog('Feedback Added Successfully. Thank You!!');
+            }
+            break;
+
         case 'submitFeedback':
             validateEmail(value, function (err, result) {
                 if (result) {
@@ -289,16 +299,6 @@ function processSubmitAction(session, value) {
                 }
                 //break;
             });
-
-        case 'addfeedback':
-            console.log('innnnnnn');
-            // if (addUserFeedBack(value)) {
-            //     session.beginDialog('add-profile', value);
-            // } else {
-            //     session.send(value.name + "'s Profile is already Exist");
-            // }
-            break;
-
 
         default:
         // A form data was received, invalid or incomplete since the previous validation did not pass
@@ -313,10 +313,10 @@ function validateProfile(profileInfo) {
 
     var mysql = require('mysql');
     var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hrbot"
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: "hrbots"
     });
     var nameExist = false;
     con.connect(function (err) {
@@ -341,21 +341,21 @@ function addUserFeedBack(feedBackInfo) {
         password: "",
         database: "hrbot"
     });
+    console.log(feedBackInfo);
     console.log('******************');
-    // var info = {
-    //     name: saveInfo.name,
-    //     email: saveInfo.email,
-    //     contact: saveInfo.contact,
-    //     experience: saveInfo.experience,
-    //     company: saveInfo.company,
-    //     profile: saveInfo.profile,
-    //     ctc: saveInfo.ctc,
-    //     ectc: saveInfo.ectc,
-    //     notice: saveInfo.notice,
-    // };
-    // var query = con.query('INSERT INTO candidates SET ?', info, function (err, result) {
-    //     if (err) throw err;
-    // });
+    var info = {
+        // experience: feedBackInfo.experience,
+        // current_tech: feedBackInfo.current_tech,
+        // duration: feedBackInfo.duration,
+        // familier: feedBackInfo.familier,
+        // new_tech: feedBackInfo.new_tech,
+        // behaviour: feedBackInfo.behaviour,
+        // communication: feedBackInfo.communication
+    };
+    var query = con.query('INSERT INTO candidates SET ?', info, function (err, result) {
+        if (err) throw err;
+        return true;
+    });
 }
 
 function validateEmail(userEmail, callback) {

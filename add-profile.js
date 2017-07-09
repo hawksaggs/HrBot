@@ -21,52 +21,52 @@ module.exports = function save(session, profileInfo) {
                     'body': [
                         {
                             'type': 'Container',
-                            'items' : [
-                                    {
-                            'type': 'TextBlock',
-                            'text': title,
-                            'size': 'extraLarge',
-                            'speak': '<s>' + title + '</s>'
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Name : '+profileInfo.name,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Contact : '+profileInfo.contact,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Email : '+profileInfo.email,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Experience : '+profileInfo.experience+' years',
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Company Name : '+profileInfo.company,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Profile : '+profileInfo.profile,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'current CTC : '+profileInfo.ctc,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Exp. CTC : '+profileInfo.ectc,
-                        },
-                        {
-                            'type': 'TextBlock',
-                            'text': 'Notice Period : '+profileInfo.notice,
-                        }
+                            'items': [
+                                {
+                                    'type': 'TextBlock',
+                                    'text': title,
+                                    'size': 'extraLarge',
+                                    'speak': '<s>' + title + '</s>'
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Name : ' + profileInfo.name,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Contact : ' + profileInfo.contact,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Email : ' + profileInfo.email,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Experience : ' + profileInfo.experience + ' years',
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Company Name : ' + profileInfo.company,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Profile : ' + profileInfo.profile,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'current CTC : ' + profileInfo.ctc,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Exp. CTC : ' + profileInfo.ectc,
+                                },
+                                {
+                                    'type': 'TextBlock',
+                                    'text': 'Notice Period : ' + profileInfo.notice,
+                                }
                             ]
                         }
-                        
+
                     ]
                 }
             };
