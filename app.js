@@ -245,19 +245,19 @@ var bot = new builder.UniversalBot(connector, function (session) {
     session.send(msg);
 });
 
-// bot.on('conversationUpdate', function (message) {
-//         if (message.membersAdded) {
-//             message.membersAdded.forEach(function (identity) {
-//                 if (identity.id === message.address.bot.id) {
-//                     var reply = new builder.Message()
-//                         .speak('Welcome to HR Bot')
-//                         .address(message.address)
-//                         .text('Welcome to HR Bot.');
-//                     bot.send(reply);
-//                 }
-//             });
-//         }
-//     });
+bot.on('conversationUpdate', function (message) {
+        if (message.membersAdded) {
+            message.membersAdded.forEach(function (identity) {
+                if (identity.id === message.address.bot.id) {
+                    var reply = new builder.Message()
+                        .speak('Welcome to HR Bot')
+                        .address(message.address)
+                        .text('Welcome to HR Bot.');
+                    bot.send(reply);
+                }
+            });
+        }
+    });
 
 bot.dialog('add-profile', require('./add-profile'));
 bot.dialog('get-feedback', require('./get-feedback'));

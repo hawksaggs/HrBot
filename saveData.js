@@ -7,9 +7,9 @@ module.exports = {
 
              var mysql = require('mysql');
 var con = mysql.createConnection({
-host: "localhost",
-user: "root",
-password: "",
+host: process.env.HOST,
+user: process.env.USER,
+password: process.env.PASSWORD,
 database: "hrbot"
  });
  con.connect(function(err) {
