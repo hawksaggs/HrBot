@@ -22,10 +22,10 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 var con = mysql.createConnection({
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE
+        host: '34.211.237.226',
+        user: 'bot_teamn',
+        password: 'bot@teamn%$#321',
+        database: 'hr_bots'
     });
 server.post('/api/messages', connector.listen());
 var bot = new builder.UniversalBot(connector);
