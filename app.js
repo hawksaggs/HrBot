@@ -18,8 +18,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 // Create chat bot and listen to messages
 var connector = new builder.ChatConnector({
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
+    appId: 'de1a4fa9-430f-46ca-b631-6737582a7ae9',
+    appPassword: 'fhrcyWBzgPpWbsygyz9N4zn'
 });
 var con = mysql.createConnection({
         host: '34.211.237.226',
