@@ -25,7 +25,7 @@ var con = mysql.createConnection({
         host: '34.211.237.226',
         user: 'bot_teamn',
         password: 'bot@teamn%$#321',
-        database: 'hr_bots'
+        database: 'hrbots'
     });
 server.post('/api/messages', connector.listen());
 var bot = new builder.UniversalBot(connector);
